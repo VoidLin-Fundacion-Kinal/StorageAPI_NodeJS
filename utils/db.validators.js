@@ -4,7 +4,7 @@ import {
 } from 'mongoose'
 
 
-import User from '../src/user/user.model.js'
+import User from '../src/User/user.model.js'
 
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
