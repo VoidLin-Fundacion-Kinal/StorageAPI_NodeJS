@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "406714ee-9235-48b0-a38c-381d6b6abfef",
+		"name": "HotelManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956967"
+	},
+	"item": [
+		{
+			"name": "Authenticator",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Flores",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dflores-202020@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "dflores",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Dfl@re2007",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "55004120",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/register",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody)\r",
+									"postman.setGlobalVariable('token',data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLogin",
+									"value": "dflores",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Dfl@re2007",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/login",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Figueroa",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dfigueroa-20202@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "dflores",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "47491420",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/updateUser/680edfdbcd028f0428140063",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"updateUser",
+								"680edfdbcd028f0428140063"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oldPassword",
+									"value": "Dfl@re2007",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "Dfl@re1974",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/updatePassword/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"updatePassword",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "Dfl@re2007",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/deleteUser/680ed1bdc932839efce62ac0",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"deleteUser",
+								"680ed1bdc932839efce62ac0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": []
+		},
+		{
+			"name": "Evento",
+			"item": []
+		},
+		{
+			"name": "Reservación",
+			"item": []
+		},
+		{
+			"name": "Habitación",
+			"item": []
+		},
+		{
+			"name": "Factura",
+			"item": []
+		},
+		{
+			"name": "Servicio",
+			"item": []
+		},
+		{
+			"name": "Informe",
+			"item": []
+		}
+	]
+}
