@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "68f946d2-f411-46da-9556-5c227e73d4d3",
+		"_postman_id": "500c250e-8b13-41e4-89b5-00321b439a76",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956967"
+		"_exporter_id": "37956954"
 	},
 	"item": [
 		{
@@ -282,7 +282,150 @@
 		},
 		{
 			"name": "Client",
-			"item": []
+			"item": [
+				{
+					"name": "getClient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/client/getClient",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"client",
+								"getClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postClient",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "jose miguel",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "pirir perez",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "shukode",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "jpirir@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "20231457",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/client/addClient",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"client",
+								"addClient"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putClient",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "paolo isaac",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "consuegra martinez",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "voidlin",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "pconsugegra@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "78945612",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/client/updateClient/6812f0029e93a8668df17c3a",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"client",
+								"updateClient",
+								"6812f0029e93a8668df17c3a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteClient",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/client/deleteClient/6812f0029e93a8668df17c3a",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"client",
+								"deleteClient",
+								"6812f0029e93a8668df17c3a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
