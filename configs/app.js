@@ -9,6 +9,7 @@ import helmet from 'helmet'
 import cors from 'cors'
 import authRoutes from '../src/Auth/auth.routes.js'
 import userRoutes from '../src/User/user.routes.js'
+import providerRoutes from '../src/Provider/provider.routes.js'
 
 const configs = (app) => {
     app.use(express.json())
@@ -25,7 +26,7 @@ const routes = (app) => {
     //Rutas de Autenticación
     app.use(authRoutes)
     app.use('/v1/user', userRoutes)
-    
+    app.use('/v1/provider', providerRoutes)
 
 }
 
