@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "500c250e-8b13-41e4-89b5-00321b439a76",
+		"_postman_id": "5545ef1d-cd17-47ec-b444-ce0ef5ef641b",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956954"
+		"_exporter_id": "37956984"
 	},
 	"item": [
 		{
@@ -278,33 +278,9 @@
 		},
 		{
 			"name": "Provider",
-			"item": []
-		},
-		{
-			"name": "Client",
 			"item": [
 				{
-					"name": "getClient",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/client/getClient",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"client",
-								"getClient"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "postClient",
+					"name": "Agregar Proveedor",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -313,119 +289,92 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "jose miguel",
+									"value": "Hola1q",
 									"type": "text"
 								},
 								{
 									"key": "surname",
-									"value": "pirir perez",
-									"type": "text"
-								},
-								{
-									"key": "company",
-									"value": "shukode",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "jpirir@gmail.com",
+									"value": "Dos",
 									"type": "text"
 								},
 								{
 									"key": "phone",
-									"value": "20231457",
+									"value": "41662861",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "d1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "aaaaa",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:2002/v1/client/addClient",
+							"raw": "localhost:2002/v1/provider/saveProvider",
 							"host": [
 								"localhost"
 							],
 							"port": "2002",
 							"path": [
 								"v1",
-								"client",
-								"addClient"
+								"provider",
+								"saveProvider"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "putClient",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "paolo isaac",
-									"type": "text"
-								},
-								{
-									"key": "surname",
-									"value": "consuegra martinez",
-									"type": "text"
-								},
-								{
-									"key": "company",
-									"value": "voidlin",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "pconsugegra@gmail.com",
-									"type": "text"
-								},
-								{
-									"key": "phone",
-									"value": "78945612",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "localhost:2002/v1/client/updateClient/6812f0029e93a8668df17c3a",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"client",
-								"updateClient",
-								"6812f0029e93a8668df17c3a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteClient",
+					"name": "Eliminar Proveedor",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:2002/v1/client/deleteClient/6812f0029e93a8668df17c3a",
+							"raw": "localhost:2002/v1/provider/deleteProvider/681312fb1b1101e797f3eb5e",
 							"host": [
 								"localhost"
 							],
 							"port": "2002",
 							"path": [
 								"v1",
-								"client",
-								"deleteClient",
-								"6812f0029e93a8668df17c3a"
+								"provider",
+								"deleteProvider",
+								"681312fb1b1101e797f3eb5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/provider/getAllProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"getAllProvider"
 							]
 						}
 					},
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Client",
+			"item": []
 		}
 	]
 }

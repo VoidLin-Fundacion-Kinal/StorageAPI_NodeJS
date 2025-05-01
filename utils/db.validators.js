@@ -5,6 +5,7 @@ import {
 
 
 import User from '../src/User/user.model.js'
+import Provider from '../src/Provider/provider.model.js'
 
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
@@ -46,4 +47,27 @@ export const findUser = async(id)=>{
         console.error(err)
         return false
     }
+}
+
+//Validaciones para proveedor
+export const emailExistProvider = async (email) => {
+    const exists = await Provider.findOne({ email });
+    if (exists) {
+        throw new Error('Email already in use');
+    }
+    return true;
+}
+
+export const nameExistProvider = async (name) => {
+    const exists = await Provider.findOne({ name });
+    if (exists) {
+        throw new Error('Provider name already exists');
+    }
+    return true;
+}
+
+export const providerExists = async (id) => {
+    const provider = await Provider.findById(id);
+    if (!provider) throw new Error('Provider not found');
+    return true;
 }

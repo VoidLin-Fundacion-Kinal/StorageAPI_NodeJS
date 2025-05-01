@@ -1,4 +1,5 @@
 import {
+    param,
     body
 } from 'express-validator'
 
@@ -8,9 +9,12 @@ import {
 } from './validate.error.js'
 
 import {
+    emailExistProvider,
     existEmail,
     existUsername,
-    notRequiredField
+    nameExistProvider,
+    notRequiredField,
+    providerExists
 } from '../utils/db.validators.js'
 
 /* Observación: Colocar comentario acerca de la Validación */
@@ -83,5 +87,38 @@ export const updatePasswordValidator = [
         .withMessage('New password must be strong')
         .isLength({min: 8, max: 20})
         .withMessage('Enter your password again'),
+    validateErrors
+]
+
+///Validacion al agregar proveedor 
+export const providerValidator = [
+    body('name', 'Name cannot be empty')
+        .notEmpty()
+        .trim()       //Elimina espacios en blanco por si se deja alguno
+        .custom(nameExistProvider),
+    body('surname', 'Surname cannot be empty')
+        .notEmpty()
+        .trim(),
+    body('email', 'Email cannot be empty')
+        .notEmpty()
+        .isEmail()
+        .custom(emailExistProvider),
+    body('phone', 'Phone cannot be empty')
+        .notEmpty()
+        .isLength({ min: 8, max: 8 })
+        .withMessage('Phone must be exactly 8 digits')
+        .isNumeric() //Verifica que solo sean valores numericos
+        .withMessage('Phone must contain only numbers'),
+    body('address', 'Address cannot be empty')
+        .notEmpty()
+        .trim(),
+    validateErrors
+]
+
+export const deleteProviderValidator = [
+    param('id')
+        .notEmpty().withMessage('ID parameter is required')
+        .isMongoId().withMessage('Invalid ID format')
+        .custom(providerExists),
     validateErrors
 ]
