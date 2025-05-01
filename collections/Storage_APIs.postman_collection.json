@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "68f946d2-f411-46da-9556-5c227e73d4d3",
+		"_postman_id": "5545ef1d-cd17-47ec-b444-ce0ef5ef641b",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956967"
+		"_exporter_id": "37956984"
 	},
 	"item": [
 		{
@@ -278,7 +278,99 @@
 		},
 		{
 			"name": "Provider",
-			"item": []
+			"item": [
+				{
+					"name": "Agregar Proveedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hola1q",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Dos",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "41662861",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "d1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "aaaaa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/provider/saveProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"saveProvider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Proveedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/provider/deleteProvider/681312fb1b1101e797f3eb5e",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"deleteProvider",
+								"681312fb1b1101e797f3eb5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/provider/getAllProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"getAllProvider"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Client",
