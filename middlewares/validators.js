@@ -14,7 +14,9 @@ import {
     existUsername,
     nameExistProvider,
     notRequiredField,
-    providerExists
+    providerExists,
+    productNameExists,
+    productExists
 } from '../utils/db.validators.js'
 
 /* Observación: Colocar comentario acerca de la Validación */
@@ -120,5 +122,84 @@ export const deleteProviderValidator = [
         .notEmpty().withMessage('ID parameter is required')
         .isMongoId().withMessage('Invalid ID format')
         .custom(providerExists),
+    validateErrors
+]
+
+
+/**
+ * Validations for creating a product
+ */
+export const createProductValidator = [
+    body('name', 'Product name cannot be empty')
+        .notEmpty()
+        .trim()
+        .custom(productNameExists),
+    body('category', 'Category cannot be empty')
+        .notEmpty()
+        .trim(),
+    body('amount', 'Amount must be a number and cannot be negative')
+        .notEmpty()
+        .isNumeric()
+        .withMessage('Amount must be a number')
+        .isFloat({ min: 0 })
+        .withMessage('Amount must be zero or greater'),
+    body('description')
+        .optional()
+        .trim(),
+    body('location')
+        .optional()
+        .trim(),
+    body('provider', 'Provider ID is required')
+        .notEmpty()
+        .isMongoId()
+        .withMessage('Invalid provider ID')
+        .custom(providerExists),
+    validateErrors
+]
+
+/**
+ * Validations for updating a product
+ */
+export const updateProductValidator = [
+    param('id')
+        .notEmpty().withMessage('Product ID is required')
+        .isMongoId().withMessage('Invalid product ID')
+        .custom(productExists),
+    body('name')
+        .optional()
+        .notEmpty()
+        .trim(),
+    body('category')
+        .optional()
+        .notEmpty()
+        .trim(),
+    body('amount')
+        .optional()
+        .isNumeric()
+        .withMessage('Amount must be a number')
+        .isFloat({ min: 0 })
+        .withMessage('Amount must be zero or greater'),
+    body('description')
+        .optional()
+        .trim(),
+    body('location')
+        .optional()
+        .trim(),
+    body('provider')
+        .optional()
+        .isMongoId()
+        .withMessage('Invalid provider ID')
+        .custom(providerExists),
+    validateErrors
+]
+
+/**
+ * Validations for deleting a product
+ */
+export const deleteProductValidator = [
+    param('id')
+        .notEmpty().withMessage('Product ID is required')
+        .isMongoId().withMessage('Invalid product ID')
+        .custom(productExists),
     validateErrors
 ]
