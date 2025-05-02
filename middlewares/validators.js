@@ -122,3 +122,27 @@ export const deleteProviderValidator = [
         .custom(providerExists),
     validateErrors
 ]
+
+export const registerMovement = [
+    body('product', 'Product cannot be empty')
+        .notEmpty(),
+    body('type', 'Type cannot be empty')
+        .notEmpty(),
+    body('quantity', 'Quantity cannot be empty')
+        .notEmpty()
+        .isNumeric()
+        .withMessage('Must be a Number'),
+    body('date', 'Date cannot be empty')
+        .notEmpty()
+        .isISO8601()
+        .withMessage('Date invalid'),
+    body('reason', 'Reason cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('destination', 'Destination cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('employee', 'Employe cannot be empty')
+        .notEmpty(),
+    validateErrors
+]
