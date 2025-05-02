@@ -53,5 +53,27 @@ export const isAdmin = async(req, res, next)=>{
     }
 }
 
+//Ver si tiene rol de empleado
+export const isEmployee = async(req, res, next)=>{
+    try{
+        const { user } = req
+        if(!user || user.role !== 'EMPLOYEE') return res.status(403).send(
+            {
+                success: false,
+                message: `You don't have access | username ${user.username}`
+            }
+        )
+        next()
+    }catch(err){
+        console.error(err)
+        return res.status(403).send(
+            {
+                success: false,
+                message: 'Error with authorization'
+            }
+        )
+    }
+}
+
 /*OBSERVACIÓN: Si se llegan agregar un Validator nuevo, tomar en cuenta
 su funcionalidad y agregar un comentario acerca de eso. */
