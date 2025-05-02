@@ -6,7 +6,7 @@ const ProductsSchema = new mongoose.Schema({
         type: String,
         required: [true,'Product name is required'],
         trim: true,
-        required: [true,'Product name is required']
+        unique: [true, 'Product is already taken'], 
     },
     category:{
         type: String,
