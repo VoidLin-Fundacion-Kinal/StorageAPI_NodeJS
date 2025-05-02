@@ -3,12 +3,14 @@ import { getAllClient,
     addClient,
     updateClient,
     deleteClient } from "./client.controller.js";
+import { validateJwt } from "../../middlewares/validate.jwt.js";
+import { clientValidator,clientValidatorId } from "../../middlewares/validators.js";
 
 const api = Router()
 
-api.get('/getClient',getAllClient)
-api.post('/addClient',addClient)
-api.put('/updateClient/:id',updateClient)
-api.delete('/deleteClient/:id',deleteClient)
+api.get('/getClient',validateJwt,getAllClient)
+api.post('/addClient',validateJwt,clientValidator,addClient)
+api.put('/updateClient/:id',validateJwt,clientValidator,clientValidatorId,updateClient)
+api.delete('/deleteClient/:id',validateJwt,clientValidatorId,deleteClient)
 
 export default api
