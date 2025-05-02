@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5545ef1d-cd17-47ec-b444-ce0ef5ef641b",
+		"_postman_id": "5f50337d-0874-4c2e-9475-410d457942fb",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956984"
+		"_exporter_id": "37956963"
 	},
 	"item": [
 		{
@@ -274,7 +274,308 @@
 		},
 		{
 			"name": "Products",
-			"item": []
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by name",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by date",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 16",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6813fd7b9aadd0de6f30ad33",
+									"type": "text"
+								},
+								{
+									"key": "deleteFrom",
+									"value": "6813fd709aadd0de6f30ad2e",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Provider",
