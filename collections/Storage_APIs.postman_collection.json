@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "5f50337d-0874-4c2e-9475-410d457942fb",
+		"_postman_id": "0f2cf762-2628-425c-9312-b470d6ee61f8",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956963"
+		"_exporter_id": "37956967"
 	},
 	"item": [
 		{
@@ -400,13 +400,19 @@
 							"type": "noauth"
 						},
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Victus 16",
+									"value": "Victus 18",
 									"type": "text"
 								},
 								{
@@ -431,7 +437,7 @@
 								},
 								{
 									"key": "provider",
-									"value": "6813fd7b9aadd0de6f30ad33",
+									"value": "6814ed27ae76ef03bc27d5f4",
 									"type": "text"
 								},
 								{
@@ -439,6 +445,11 @@
 									"value": "6813fd709aadd0de6f30ad2e",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "7000",
+									"type": "text"
 								}
 							]
 						},
