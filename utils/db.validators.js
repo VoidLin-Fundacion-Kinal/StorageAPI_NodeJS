@@ -6,6 +6,7 @@ import {
 
 import User from '../src/User/user.model.js'
 import Provider from '../src/Provider/provider.model.js'
+import Products from '../src/Products/products.model.js'
 
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
@@ -70,4 +71,18 @@ export const providerExists = async (id) => {
     const provider = await Provider.findById(id);
     if (!provider) throw new Error('Provider not found');
     return true;
+}
+
+// Check if product name already exists
+export const productNameExists = async (name) => {
+    const product = await Products.findOne({ name })
+    if (product) throw new Error('Product name already exists')
+    return true
+}
+
+// Check if product exists by ID
+export const productExists = async (id) => {
+    const product = await Products.findById(id)
+    if (!product) throw new Error('Product not found')
+    return true
 }
