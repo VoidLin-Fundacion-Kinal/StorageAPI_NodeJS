@@ -20,6 +20,8 @@ import {
     deleteFrom
 } from '../utils/db.validators.js'
 
+import Client from '../src/Client/client.model.js'
+
 /* Observación: Colocar comentario acerca de la Validación */
 
 
@@ -272,4 +274,28 @@ export const getProductByID = [
         .isMongoId().withMessage('Invalid product ID')
         .custom(productExists),
     validateErrors
+]
+
+export const clientValidator = [
+    body('name')
+    .notEmpty().withMessage('Name is required'),
+    body('surname').notEmpty().withMessage('surname is requried'),
+    body('company').notEmpty().withMessage('company is requried'),
+    body('email').isEmail().notEmpty().withMessage('email is requried'),
+    body('phone').notEmpty().withMessage('Phone is requried'),
+    validateErrorsWithoutFiles
+]
+
+export const clientValidatorId = [
+    param('id').custom(async (id) => {
+        if(!mongoose.Types.ObjectId.isValid(id)){
+            return Promise.reject('Invalid client ID format')
+        }
+
+        const client = await Client.findById(id)
+        if (!client) {
+            return Promise.reject('Client does not exist')
+        }
+    }),
+    validateErrorsWithoutFiles
 ]
