@@ -6,6 +6,8 @@ import {
 
 import User from '../src/User/user.model.js'
 import Provider from '../src/Provider/provider.model.js'
+import Movement from '../src/InventoryMovement/movement.model.js'
+import Product from '../src/Products/products.model.js'
 
 /* Observación: Identificar en Español el 
 validador, para evitar problemas a futuros. */
@@ -69,5 +71,17 @@ export const nameExistProvider = async (name) => {
 export const providerExists = async (id) => {
     const provider = await Provider.findById(id);
     if (!provider) throw new Error('Provider not found');
+    return true;
+}
+
+export const movementsExists = async (id) => {
+    const movement = await Movement.findById(id);
+    if (!movement) throw new Error('Movement not found');
+    return true;
+}
+
+export const productsExists = async (id) => {
+    const product = await Product.findById(id);
+    if (!product) throw new Error('Product not found');
     return true;
 }
