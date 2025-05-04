@@ -19,9 +19,6 @@ import {
     productExists
 } from '../utils/db.validators.js'
 
-import Client from '../src/Client/client.model.js'
-import mongoose from 'mongoose'
-
 /* Observación: Colocar comentario acerca de la Validación */
 
 
@@ -146,6 +143,12 @@ export const createProductValidator = [
         .withMessage('Amount must be a number')
         .isFloat({ min: 0 })
         .withMessage('Amount must be zero or greater'),
+    body('price', 'Price must be a number and cannot be negative')
+        .notEmpty()
+        .isNumeric()
+        .withMessage('Price must be a number')
+        .isFloat({ min: 0 })
+        .withMessage('Price must be zero or greater'),
     body('description')
         .optional()
         .trim(),
@@ -182,6 +185,12 @@ export const updateProductValidator = [
         .withMessage('Amount must be a number')
         .isFloat({ min: 0 })
         .withMessage('Amount must be zero or greater'),
+    body('price')
+        .optional()
+        .isNumeric()
+        .withMessage('Price must be a number')
+        .isFloat({ min: 0 })
+        .withMessage('Price must be zero or greater'),
     body('description')
         .optional()
         .trim(),
@@ -207,6 +216,7 @@ export const deleteProductValidator = [
     validateErrors
 ]
 
+//Client validators
 export const clientValidator = [
     body('name')
     .notEmpty().withMessage('Name is required'),
