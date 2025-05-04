@@ -23,12 +23,12 @@ import {
 const api = Router()
 
 api.post('/products', validateJwt,  createProductValidator, createProducts)
-api.get('/products', validateJwt,  getAllProducst)
-api.get('/products/:id', getProductByID,  getProductById)
-api.get('/category/:category', validateJwt, getProductByCategory)
-api.get('/name/:name', validateJwt,  getProductByName)
-api.get('/date/:createdAt', validateJwt,  validateJwt, getProductByDateCreate)
-api.put('/products/:id', validateJwt,  getProductByID, updateProductValidator,  updateProducts)
-api.put('/product/:id', validateJwt,  getProductByID,  deleteProductValidator, deleteProduct)
+api.get('/products', validateJwt,   getAllProducst)
+api.get('/products/:id',validateJwt, getProductByID,  getProductById)
+api.get('/category/:category',validateJwt,  getProductByCategory)
+api.get('/name/:name',validateJwt,   getProductByName)
+api.get('/date/:createdAt',validateJwt, getProductByDateCreate)
+api.put('/products/:id',validateJwt,   getProductByID, updateProductValidator,  updateProducts)
+api.put('/product/:id',validateJwt,   getProductByID,  deleteProductValidator, deleteProduct)
 
 export default api
