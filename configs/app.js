@@ -13,6 +13,7 @@ import providerRoutes from '../src/Provider/provider.routes.js'
 import productsRoutes from '../src/Products/products.routes.js'
 import clientRoutes from '../src/Client/client.routes.js'
 import reportRoutes from '../src/report/report.routes.js'
+import movementRoutes from '../src/InventoryMovement/movement.routes.js'
 
 const configs = (app) => {
     app.use(express.json())
@@ -33,6 +34,7 @@ const routes = (app) => {
     app.use('/v1/products', productsRoutes)
     app.use('/v1/client',clientRoutes)
     app.use('/v1/report',reportRoutes)
+    app.use('/v1/movement', movementRoutes)
 
 }
 
