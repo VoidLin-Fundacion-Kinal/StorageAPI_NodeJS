@@ -10,6 +10,8 @@ import cors from 'cors'
 import authRoutes from '../src/Auth/auth.routes.js'
 import userRoutes from '../src/User/user.routes.js'
 import providerRoutes from '../src/Provider/provider.routes.js'
+import movementRoutes from '../src/InventoryMovement/movement.routes.js'
+
 
 const configs = (app) => {
     app.use(express.json())
@@ -27,6 +29,8 @@ const routes = (app) => {
     app.use(authRoutes)
     app.use('/v1/user', userRoutes)
     app.use('/v1/provider', providerRoutes)
+    app.use('/v1/movement', movementRoutes)
+
 
 }
 
