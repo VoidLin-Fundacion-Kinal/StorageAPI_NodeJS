@@ -1,7 +1,6 @@
-import mongoose, {Schema, model} from "mongoose";
+import {model, Schema} from "mongoose";
 
-
-const ProductsSchema = new Schema({
+const ProductsSchema = Schema({
     name:{
         type: String,
         required: [true,'Product name is required'],
@@ -27,7 +26,6 @@ const ProductsSchema = new Schema({
         type: String,
         trim: true
     },
-
     price:{
         type: Number,
         required: true,
@@ -35,7 +33,7 @@ const ProductsSchema = new Schema({
     },
 
     provider:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Provider',
         required: true
     },
@@ -48,7 +46,7 @@ const ProductsSchema = new Schema({
         default: null,
     },
     deleteFrom: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         default: null
     },
@@ -59,4 +57,5 @@ const ProductsSchema = new Schema({
     },{
         timestamps: true
 })
+
 export default model('Products', ProductsSchema)
