@@ -29,7 +29,7 @@ export const createProducts = async (req, res) => {
 export const getAllProducst = async (req, res) => {
     try{
         const  { limit = 20, skip = 0} = req.query
-        const products = await Products.find()
+        const products = await Products.find({removed: false})
             .populate("provider")
             .skip(Number(skip))
             .limit(Number(limit))
@@ -82,7 +82,7 @@ export const getProductById = async (req, res) => {
 export const getProductByCategory = async (req, res) => {
     try{
         const { category } = req.params;
-        const products = await Products.find({ category })
+        const products = await Products.find({ category ,removed: false})
             .populate("provider")
 
         if(!products){
@@ -111,7 +111,7 @@ export const getProductByCategory = async (req, res) => {
 export const getProductByName= async (req, res) => {
     try{
         const { name } = req.params;
-        const products = await Products.find({ name })
+        const products = await Products.find({ name , removed: false})
             .populate("provider")
 
         if(!products){
@@ -140,9 +140,8 @@ export const getProductByName= async (req, res) => {
 export const getProductByDateCreate= async (req, res) => {
     try{
         const { createdAt } = req.params;
-        const products = await Products.find({ createdAt })
+        const products = await Products.find({ createdAt ,removed: false})
             .populate("provider")
-        
         
         if(!products.length){
             return res.status(404).send({
@@ -196,13 +195,21 @@ export const deleteProduct = async(req, res) => {
         const { id } = req.params
         const data = req.body
 
+        const {user} = req
+
+        const product = await Products.findById(id)
+
+        product.removed = true
+        product.deleteFrom = user.uid
+        product.deletionDate = Date.now()
+        product.save()
    
     // Update Product
-    const deleteProduct = await Products.findByIdAndUpdate(
+        const deleteProduct = await Products.findByIdAndUpdate(
         id,
         data,
         { new:true }
-    ).populate("deleteFrom")
+        ).populate("deleteFrom")
 
     return res.send({
         success: true,
