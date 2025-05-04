@@ -27,6 +27,13 @@ const ProductsSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+
+    price:{
+        type: Number,
+        required: true,
+        default: 0,
+    },
+
     provider:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Provider',
