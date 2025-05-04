@@ -15,19 +15,20 @@ import {
 import { 
         createProductValidator, 
         updateProductValidator,
-        deleteProductValidator
+        deleteProductValidator, 
+        getProductByID
     } from "../../middlewares/validators.js"
   
 
 const api = Router()
 
-api.post('/products', validateJwt, createProductValidator, createProducts)
-api.get('/products', validateJwt, getAllProducst)
-api.get('/products/:id', validateJwt, getProductById)
-api.get('/category/:category',validateJwt,  getProductByCategory)
-api.get('/name/:name',validateJwt,  getProductByName)
+api.post('/products', createProductValidator, createProducts)
+api.get('/products', getAllProducst)
+api.get('/products/:id', getProductByID,  getProductById)
+api.get('/category/:category' ,getProductByCategory)
+api.get('/name/:name', getProductByName)
 api.get('/date/:createdAt', validateJwt, getProductByDateCreate)
-api.put('/products/:id', validateJwt, updateProductValidator,  updateProducts)
-api.put('/product/:id', validateJwt,  deleteProductValidator, deleteProduct)
+api.put('/products/:id', getProductByID, updateProductValidator,  updateProducts)
+api.put('/product/:id', getProductByID,  deleteProductValidator, deleteProduct)
 
 export default api
