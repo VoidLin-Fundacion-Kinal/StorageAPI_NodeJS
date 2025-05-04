@@ -177,6 +177,7 @@ export const createProductValidator = [
 /**
  * Validations for updating a product
  */
+
 export const updateProductValidator = [
     body('name')
         .optional()
@@ -189,18 +190,11 @@ export const updateProductValidator = [
         .notEmpty().withMessage('Category cannot be empty'),
     body('amount')
         .optional()
-<<<<<<< Updated upstream
-        .isNumeric()
-        .withMessage('Amount must be a number')
-        .isFloat({ min: 0 })
-        .withMessage('Amount must be zero or greater'),
-=======
         .isFloat({ min: 0 }).withMessage('Amount must be zero or greater'),
     body('price')
         .optional()
         .isFloat({ min: 0 }).
         withMessage('Price must be zero or greater'),
->>>>>>> Stashed changes
     body('description')
         .optional().
         trim(),
@@ -229,26 +223,26 @@ export const updateProductValidator = [
  */
 export const deleteProductValidator = [
     body('name')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('category')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('amount')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('price')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('description')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('location')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('provider')
-    .optional()
-    .custom(notRequiredField),
+        .optional()
+        .custom(notRequiredField),
     body('removed')
         .notEmpty()
         .withMessage('Removed field is required')
