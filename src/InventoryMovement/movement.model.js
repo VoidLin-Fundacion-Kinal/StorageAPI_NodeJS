@@ -4,13 +4,12 @@ const movementSchema = Schema(
     {
         product:{
             type: Schema.Types.ObjectId,
-            ref: 'Product',
+            ref: 'Products',
             required: true
         },
         type:{
             type:String,
-            enum:['entrada', 'salida'],
-            required:true
+            enum:['entrada', 'salida']
         },
         quantity:{
             type: Number,
