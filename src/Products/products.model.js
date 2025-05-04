@@ -26,14 +26,12 @@ const ProductsSchema = Schema({
         type: String,
         trim: true
     },
-<<<<<<< Updated upstream
-=======
     price:{
         type: Number,
         required: true,
         default: 0,
     },
->>>>>>> Stashed changes
+
     provider:{
         type: Schema.Types.ObjectId,
         ref: 'Provider',
