@@ -44,6 +44,7 @@ export const getAllProducst = async (req, res) => {
             .populate("provider")
             .skip(Number(skip))
             .limit(Number(limit))
+            
 
             if (products.length ===0){
                 return res.status(404).send({
@@ -81,7 +82,7 @@ export const getProductById = async (req, res) => {
                 message: 'Products not found'
             })
         }
-1       
+       
         return res.send({
             success: true,
             message: 'Products found',
@@ -111,7 +112,7 @@ export const getProductByCategory = async (req, res) => {
                 message: 'Products not found'
             })
         }
-1       
+       
         return res.send({
             success: true,
             message: 'Products found',
@@ -141,7 +142,7 @@ export const getProductByName= async (req, res) => {
                 message: 'Products not found'
             })
         }
-1       
+       
         return res.send({
             success: true,
             message: 'Products found',
@@ -171,7 +172,7 @@ export const getProductByDateCreate= async (req, res) => {
                 message: 'Products not found'
             })
         }
-1       
+      
         return res.send({
             success: true,
             message: 'Products found',
