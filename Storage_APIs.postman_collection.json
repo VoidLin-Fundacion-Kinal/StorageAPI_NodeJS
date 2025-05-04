@@ -1,0 +1,681 @@
+{
+	"info": {
+		"_postman_id": "5f50337d-0874-4c2e-9475-410d457942fb",
+		"name": "Storage_APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956963"
+	},
+	"item": [
+		{
+			"name": "Authenticator",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Flores",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "dflores-202020@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "dflores",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Dfl@re2007",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "55004120",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/register",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody)\r",
+									"postman.setGlobalVariable('token',data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userLogin",
+									"value": "dflores",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Dfl@re2007",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/login",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Diego",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "surname",
+									"value": "Figueroa",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "dfigueroa-20202@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "username",
+									"value": "dflores",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "47491420",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "Alfred@88197",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/updateUser/681050babbffd99ed4119dd7",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"updateUser",
+								"681050babbffd99ed4119dd7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "oldPassword",
+									"value": "Dfl@re2007",
+									"type": "text"
+								},
+								{
+									"key": "newPassword",
+									"value": "Dfl@re1974",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/updatePassword/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"updatePassword",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "Dfl@re1974",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/user/deleteUser/681050babbffd99ed4119dd7",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"user",
+								"deleteUser",
+								"681050babbffd99ed4119dd7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InventoryMovement",
+			"item": []
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by name",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by date",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 16",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6813fd7b9aadd0de6f30ad33",
+									"type": "text"
+								},
+								{
+									"key": "deleteFrom",
+									"value": "6813fd709aadd0de6f30ad2e",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Provider",
+			"item": [
+				{
+					"name": "Agregar Proveedor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Hola1q",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Dos",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "41662861",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "d1@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "aaaaa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/provider/saveProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"saveProvider"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Proveedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/provider/deleteProvider/681312fb1b1101e797f3eb5e",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"deleteProvider",
+								"681312fb1b1101e797f3eb5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/provider/getAllProvider",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"provider",
+								"getAllProvider"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": []
+		}
+	]
+}
