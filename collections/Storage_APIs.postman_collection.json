@@ -307,7 +307,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:2002/v1/products/products",
+							"raw": "localhost:2002/v1/products/products/681715658848965d51ba27f1",
 							"host": [
 								"localhost"
 							],
@@ -315,7 +315,8 @@
 							"path": [
 								"v1",
 								"products",
-								"products"
+								"products",
+								"681715658848965d51ba27f1"
 							]
 						}
 					},
@@ -330,7 +331,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:2002/v1/products/Category/Technology",
+							"raw": "localhost:2002/v1/products/name/Victus 27",
 							"host": [
 								"localhost"
 							],
@@ -338,8 +339,8 @@
 							"path": [
 								"v1",
 								"products",
-								"Category",
-								"Technology"
+								"name",
+								"Victus 27"
 							]
 						}
 					},
@@ -378,7 +379,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:2002/v1/products/Category/Technology",
+							"raw": "localhost:2002/v1/products/date/2025-05-04T07:21:09.051+00:00",
 							"host": [
 								"localhost"
 							],
@@ -386,8 +387,8 @@
 							"path": [
 								"v1",
 								"products",
-								"Category",
-								"Technology"
+								"date",
+								"2025-05-04T07:21:09.051+00:00"
 							]
 						}
 					},
@@ -406,7 +407,7 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Victus 16",
+									"value": "HP victus 787",
 									"type": "text"
 								},
 								{
@@ -430,15 +431,14 @@
 									"type": "text"
 								},
 								{
-									"key": "provider",
-									"value": "6813fd7b9aadd0de6f30ad33",
+									"key": "price",
+									"value": "7",
 									"type": "text"
 								},
 								{
-									"key": "deleteFrom",
-									"value": "6813fd709aadd0de6f30ad2e",
-									"type": "text",
-									"disabled": true
+									"key": "provider",
+									"value": "6816fce2618b54390eaa4c31",
+									"type": "text"
 								}
 							]
 						},
