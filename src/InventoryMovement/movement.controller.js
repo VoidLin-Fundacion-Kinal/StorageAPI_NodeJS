@@ -3,10 +3,10 @@
 
 import Movement from './movement.model.js'
 import User from '../User/user.model.js'
-import Product from '../Products/product.model.js'
+import Product from '../Products/products.model.js'
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-export const addmovementExit = async(req,res)=>{//Hacer validaciones para register
+export const addmovementExit = async(req,res)=>{
     try {
         let data = req.body
 
@@ -58,7 +58,9 @@ export const addmovementExit = async(req,res)=>{//Hacer validaciones para regist
 
         movement.type = 'salida'
 
-        await productSave.updateOne({_id: productSave._id},{$inc:{amount: -quantity}})
+        movement.employee = userT.uid
+
+        await Product.updateOne({_id: product},{$inc:{amount: -quantity}})
 
         await movement.save()
 
@@ -79,7 +81,8 @@ export const addmovementExit = async(req,res)=>{//Hacer validaciones para regist
     } 
 }
 
-export const addmovement = async(req,res)=>{//Hacer validaciones para register
+
+export const addmovement = async(req,res)=>{
     try {
         let data = req.body
 
@@ -98,7 +101,8 @@ export const addmovement = async(req,res)=>{//Hacer validaciones para register
                     message: `User don't found`
                 }
             )
-        }else if(!productSave){
+        } 
+        if(!productSave){
             return res.status(404).send(
                 {
                     success: false,
@@ -118,13 +122,15 @@ export const addmovement = async(req,res)=>{//Hacer validaciones para register
             )
         }
 
-        /* let newStock = productSave.amount + quantity */
+         /* let newStock = productSave.amount + quantity  */
 
         movement.date = Date.now()
 
         movement.type = 'entrada'
 
-        await productSave.updateOne({_id: productSave._id},{$inc:{amount: quantity}})
+        movement.employee = userT.uid
+
+        await Product.updateOne({_id: product},{$inc:{amount: quantity}})
 
         await movement.save()
 
@@ -145,9 +151,10 @@ export const addmovement = async(req,res)=>{//Hacer validaciones para register
     } 
 }
 
+
 export const getMovements = async(req,res)=>{
     try {
-        let movement = Movement.find().populate('product','name -_id')
+        let movement = await Movement.find().populate('product','name -_id').populate('employee','name')
 
         if(!movement){
             return res.status(404).send(
@@ -169,7 +176,7 @@ export const getMovements = async(req,res)=>{
         console.error(error)
         return res.status(500).send(
             {
-                message: 'General error with registering movement', error
+                message: 'General error with  movements', error
             }
         )
     }
@@ -179,7 +186,7 @@ export const getMovemetsWithID = async(req,res)=>{
     try {
         let {id} = req.params
 
-        let movement = Movement.findById(id).populate('product','name -_id')
+        let movement = await Movement.findById(id).populate('product','name -_id').populate('employee','name')
 
         if(!movement){
             return res.status(404).send(
@@ -201,7 +208,7 @@ export const getMovemetsWithID = async(req,res)=>{
         console.error(error)
         return res.status(500).send(
             {
-                message: 'General error with registering movement', error
+                message: 'General error with  movements', error
             }
         )
     }
@@ -209,7 +216,7 @@ export const getMovemetsWithID = async(req,res)=>{
 
 export const historialProducts = async(req,res)=>{
     try {
-        let movement = Movement.find().populate('product','name -id').sort({type: 1})
+        let movement = await Movement.find().populate('product','name -_id').sort({type: 1}).populate('employee','name')
 
         if(!movement){
             return res.status(404).send(
@@ -231,11 +238,44 @@ export const historialProducts = async(req,res)=>{
         console.error(error)
         return res.status(500).send(
             {
-                message: 'General error with registering movement', error
+                message: 'General error with  movements', error
             }
         )
     }
-    //buscar por movimiento y usar populate para los productos y ordenar con sort, el campo de type ya sea con 1 o -1(hacer validaciones)
+
+}
+
+export const historialProductsById = async(req,res)=>{
+    try {
+
+        let {id} = req.params 
+
+        let movement = await Movement.find({product: {$eq:id}}).populate('product','name -_id').sort({type: 1}).populate('employee','name')
+
+        if(!movement){
+            return res.status(404).send(
+                {
+                    success:false,
+                    message: 'Inventory Movement not found'
+                }
+            )
+        }
+
+        return res.status(200).send(
+            {
+                success: true,
+                message: 'Historial of products',
+                movement
+            }
+        )
+    } catch (error) {
+        console.error(error)
+        return res.status(500).send(
+            {
+                message: 'General error with  movements', error
+            }
+        )
+    }
 
 }
 
@@ -247,9 +287,10 @@ export const updateInventoryMovement = async(req,res)=>{
 
         let {id} = req.params
 
-        let movement = Movement.findById(id)
+        let movement = await Movement.findById(id)
 
         let productSaved = await Product.findById(movement.product)
+
 
         if(!movement){
             return res.status(404).send(
@@ -266,13 +307,13 @@ export const updateInventoryMovement = async(req,res)=>{
                 }
             )
         }
-
+        let {type} = movement
         if(quantity){
             switch(type){
                 case 'salida':
-                    await productSaved.updateOne({_id: productSaved._id},{$inc:{amount: movement.quantity}})
-                    await movement.findByIdAndUpdate(id,data,{new:true})
-                    await productSaved.updateOne({_id: productSaved._id},{$inc:{amount: -quantity}})
+                    await Product.updateOne({_id: movement.product},{$inc:{amount: movement.quantity}})
+                    await Movement.findByIdAndUpdate(id,data,{new:true})
+                    await Product.updateOne({_id: movement.product},{$inc:{amount: -quantity}})
                     return res.status(200).send(
                         {
                             success: true,
@@ -282,21 +323,21 @@ export const updateInventoryMovement = async(req,res)=>{
                     )
                     break;
                 case 'entrada':
-                    await productSaved.updateOne({_id: productSaved._id},{$inc:{amount: -movement.quantity}})
-                    await movement.findByIdAndUpdate(id,data,{new:true})
-                    await productSaved.updateOne({_id: productSaved._id},{$inc:{amount: quantity}})
+                    await Product.updateOne({_id: movement.product},{$inc:{amount: -movement.quantity}})
+                    await Movement.findByIdAndUpdate(id,data,{new:true})
+                    await Product.updateOne({_id: movement.product},{$inc:{amount: quantity}})
                     return res.status(200).send(
                         {
                             success: true,
                             message: 'Inventory Movement(entrance) updated successfully',
-                            movement
+                            movement,
                         }
                     )
                     break;
             }
         }
 
-        await movement.findByIdAndUpdate(id,data,{new:true})
+        await Movement.findByIdAndUpdate(id,data,{new:true})
 
         return res.status(200).send(
             {
@@ -309,18 +350,18 @@ export const updateInventoryMovement = async(req,res)=>{
     } catch (error) {
         return res.status(500).send(
             {
-                message: 'General error with registering movement', error
+                message: 'General error with  movements', error
             }
         )  
     }
-//hacer update y validar con un if si viene amount o no, si si viene verificar si viene entrada o salida con otro if o switch y sumarle o restarle al stock del producto dependiendo que sea(hacer validaciones)
+
 }
 
 export const deleteInventoryMovement = async(req,res)=>{
     try {
         let {id} = req.parmas
         
-        let movement = Movement.findByIdAndDelete(id)
+        let movement = await Movement.findByIdAndDelete(id)
 
         if(!movement){
             return res.status(404).send(
