@@ -12,8 +12,10 @@ import {
     emailExistProvider,
     existEmail,
     existUsername,
+    movementsExists,
     nameExistProvider,
     notRequiredField,
+    productsExists,
     providerExists
 } from '../utils/db.validators.js'
 
@@ -127,7 +129,8 @@ export const registerMovement = [
     body('product', 'Product cannot be empty')
         .notEmpty(),
     body('type', 'Type cannot be empty')
-        .notEmpty(),
+        .notEmpty()
+        .custom(notRequiredField),
     body('quantity', 'Quantity cannot be empty')
         .notEmpty()
         .isNumeric()
@@ -135,7 +138,8 @@ export const registerMovement = [
     body('date', 'Date cannot be empty')
         .notEmpty()
         .isISO8601()
-        .withMessage('Date invalid'),
+        .withMessage('Date invalid')
+        .custom(notRequiredField),
     body('reason', 'Reason cannot be empty')
         .optional()
         .notEmpty(),
@@ -143,6 +147,77 @@ export const registerMovement = [
         .optional()
         .notEmpty(),
     body('employee', 'Employe cannot be empty')
+        .notEmpty()
+        .custom(notRequiredField),
+    validateErrors
+]
+
+export const registerMovementExit = [
+    body('product', 'Product cannot be empty')
         .notEmpty(),
+    body('type', 'Type cannot be empty')
+        .notEmpty()
+        .custom(notRequiredField),
+    body('quantity', 'Quantity cannot be empty')
+        .notEmpty()
+        .isNumeric()
+        .withMessage('Must be a Number'),
+    body('date', 'Date cannot be empty')
+        .notEmpty()
+        .isISO8601()
+        .withMessage('Date invalid')
+        .custom(notRequiredField),
+    body('reason', 'Reason cannot be empty')
+        .notEmpty(),
+    body('destination', 'Destination cannot be empty')
+        .notEmpty(),
+    body('employee', 'Employe cannot be empty')
+        .notEmpty()
+        .custom(notRequiredField),
+    validateErrors
+]
+
+export const updateMovement = [
+    body('product', 'Product cannot be empty')
+        .optional()
+        .notEmpty()
+        .custom(notRequiredField),
+    body('type', 'Type cannot be empty')
+        .optional()
+        .notEmpty()
+        .custom(notRequiredField),
+    body('quantity', 'Quantity cannot be empty')
+        .optional()
+        .notEmpty()
+        .isNumeric()
+        .withMessage('Must be a Number'),
+    body('date', 'Date cannot be empty')
+        .optional()
+        .notEmpty()
+        .isISO8601()
+        .withMessage('Date invalid')
+        .custom(notRequiredField),
+    body('reason', 'Reason cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('destination', 'Destination cannot be empty')
+        .optional()
+        .notEmpty(),
+    body('employee', 'Employe cannot be empty')
+        .optional()
+        .notEmpty()
+        .custom(notRequiredField),
+    validateErrorsWithoutFiles
+]
+
+
+export const whitoutIDMovementsProducts = [
+    param('id')
+        .isMongoId()
+        .withMessage('Invalid ID format')
+        .notEmpty()
+        .withMessage('ID parameter is required')
+        
+        .custom(productsExists),
     validateErrors
 ]
