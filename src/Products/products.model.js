@@ -1,7 +1,6 @@
-import mongoose, {Schema, model} from "mongoose";
+import {model, Schema} from "mongoose";
 
-
-const ProductsSchema = new mongoose.Schema({
+const ProductsSchema = Schema({
     name:{
         type: String,
         required: [true,'Product name is required'],
@@ -27,8 +26,16 @@ const ProductsSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+<<<<<<< Updated upstream
+=======
+    price:{
+        type: Number,
+        required: true,
+        default: 0,
+    },
+>>>>>>> Stashed changes
     provider:{
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Provider',
         required: true
     },
@@ -41,7 +48,7 @@ const ProductsSchema = new mongoose.Schema({
         default: null,
     },
     deleteFrom: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         default: null
     },
@@ -52,4 +59,5 @@ const ProductsSchema = new mongoose.Schema({
     },{
         timestamps: true
 })
+
 export default model('Products', ProductsSchema)
