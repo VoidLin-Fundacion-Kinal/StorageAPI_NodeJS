@@ -86,3 +86,9 @@ export const productExists = async (id) => {
     if (!product) throw new Error('Product not found')
     return true
 }
+
+export const deleteFrom = async (id) => {
+    const user = await User.findById(id);
+        if (!user) throw new Error('User not found');
+        return true;
+    }
