@@ -192,16 +192,20 @@ export const updateProductValidator = [
         .notEmpty().withMessage('Category cannot be empty'),
     body('amount')
         .optional()
+        .notEmpty()
         .isFloat({ min: 0 }).withMessage('Amount must be zero or greater'),
     body('price')
         .optional()
+        .notEmpty()
         .isFloat({ min: 0 }).
         withMessage('Price must be zero or greater'),
     body('description')
-        .optional().
-        trim(),
+        .optional()
+        .notEmpty()
+        .trim(),
     body('location')
         .optional()
+        .notEmpty()
         .trim(),
     body('provider')
         .optional()
@@ -246,26 +250,32 @@ export const deleteProductValidator = [
         .optional()
         .custom(notRequiredField),
     body('removed')
+        .optional()
         .notEmpty()
         .withMessage('Removed field is required')
         .isBoolean()
-        .withMessage('Removed must be a boolean'),
+        .withMessage('Removed must be a boolean')
+        .custom(notRequiredField),
     body('reasonDeleted')
          .notEmpty()
         .withMessage('Reason for deletion is required')
         .isString()
         .withMessage('Reason must be a string'),
     body('deleteFrom')
+        .optional()
         .notEmpty()
         .withMessage('deleteFrom is required')
         .isMongoId()
         .withMessage('Invalid User ID')
-        .custom(deleteFrom),
+        .custom(deleteFrom)
+        .custom(notRequiredField),
     body('deletionDate')
+        .optional()
         .notEmpty()
         .withMessage('deletionDate is required')
         .isISO8601()//Verifica que sea fecha estandar internacional
-        .withMessage('deletionDate must be a valid date'),
+        .withMessage('deletionDate must be a valid date')
+        .custom(notRequiredField),
     validateErrors
 ]
 export const getProductByID = [
@@ -305,6 +315,7 @@ export const registerMovement = [
     body('product', 'Product cannot be empty')
         .notEmpty(),
     body('type', 'Type cannot be empty')
+        .optional()
         .notEmpty()
         .custom(notRequiredField),
     body('quantity', 'Quantity cannot be empty')
@@ -312,6 +323,7 @@ export const registerMovement = [
         .isNumeric()
         .withMessage('Must be a Number'),
     body('date', 'Date cannot be empty')
+        .optional()
         .notEmpty()
         .isISO8601()
         .withMessage('Date invalid')
@@ -325,6 +337,7 @@ export const registerMovement = [
         .notEmpty()
         .custom(notRequiredField),
     body('employee', 'Employe cannot be empty')
+        .optional()
         .notEmpty()
         .custom(notRequiredField),
     validateErrors
@@ -334,6 +347,7 @@ export const registerMovementExit = [
     body('product', 'Product cannot be empty')
         .notEmpty(),
     body('type', 'Type cannot be empty')
+        .optional()
         .notEmpty()
         .custom(notRequiredField),
     body('quantity', 'Quantity cannot be empty')
@@ -341,6 +355,7 @@ export const registerMovementExit = [
         .isNumeric()
         .withMessage('Must be a Number'),
     body('date', 'Date cannot be empty')
+        .optional()
         .notEmpty()
         .isISO8601()
         .withMessage('Date invalid')
@@ -350,6 +365,7 @@ export const registerMovementExit = [
     body('destination', 'Destination cannot be empty')
         .notEmpty(),
     body('employee', 'Employe cannot be empty')
+        .optional()
         .notEmpty()
         .custom(notRequiredField),
     validateErrors
@@ -398,4 +414,20 @@ export const whitoutIDMovementsProducts = [
         
         .custom(productExists),
     validateErrors
+]
+
+export const generateReportMovement = [
+    body('startDate', 'startDate cannot be empty')
+        .optional()
+        .notEmpty()
+        .withMessage('startDate must be a date in format YY-MM-DD'),
+    body('endDate', 'Type cannot be empty')
+        .optional()
+        .notEmpty()
+        .withMessage('endDate must be a date in format YY-MM-DD'),
+    body('type', 'Quantity cannot be empty')
+        .optional()
+        .notEmpty()
+        .withMessage('Type must be salida or entrada'),
+    validateErrorsWithoutFiles
 ]
