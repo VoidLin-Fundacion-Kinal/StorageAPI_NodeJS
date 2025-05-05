@@ -18,6 +18,8 @@ import { registerMovement,
         updateMovement,
         whitoutIDMovementsProducts } from "../../middlewares/validators.js"; 
 
+       import { getInventoryMovements } from "../InventoryMovementReport/InventoryMovementReport.controller.js";
+
 const api = Router()
 
 
@@ -27,6 +29,8 @@ api.post('/registerExit', validateJwt, registerMovementExit,addmovementExit)
 api.post('/registerEntrance',validateJwt,registerMovement,addmovement)
 
 //GET
+api.get('/report',[validateJwt, isAdmin],getInventoryMovements)
+
 api.get('/getMovements', validateJwt, getMovements)
 
 api.get('/getMovements/products/',validateJwt,withoutId)
@@ -39,14 +43,14 @@ api.get('/getMovements/products/:id',validateJwt,whitoutIDMovementsProducts,hist
 
 
 //delete
-api.delete('/deleteMovement/:id',validateJwt,deleteInventoryMovement)
+api.delete('/deleteMovement/:id',[validateJwt, isAdmin],deleteInventoryMovement)
 
-api.delete('/deleteMovement',validateJwt,withoutId)
+api.delete('/deleteMovement',[validateJwt, isAdmin],withoutId)
 
 //update
-api.put('/updateMovement/:id',validateJwt,updateMovement,updateInventoryMovement)
+api.put('/updateMovement/:id',[validateJwt, isAdmin],updateMovement,updateInventoryMovement)
 
-api.put('/updateMovement',validateJwt,withoutId)
+api.put('/updateMovement',[validateJwt, isAdmin],withoutId)
 
 
 export default api
