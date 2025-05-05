@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5545ef1d-cd17-47ec-b444-ce0ef5ef641b",
+		"_postman_id": "ef0329cc-9e30-4329-8042-0f7661ba525b",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "37956984"
@@ -274,7 +274,319 @@
 		},
 		{
 			"name": "Products",
-			"item": []
+			"item": [
+				{
+					"name": "Get All Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by id",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by name",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by Category",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Products by date",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2002/v1/products/Category/Technology",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"Category",
+								"Technology"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 18",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814ed27ae76ef03bc27d5f4",
+									"type": "text"
+								},
+								{
+									"key": "deleteFrom",
+									"value": "6813fd709aadd0de6f30ad2e",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "7000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete products",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Victus 17",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "Technology",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Ergonomic wireless keyboard with numeric pad",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "Warehouse B, Shelf 5",
+									"type": "text"
+								},
+								{
+									"key": "provider",
+									"value": "6814028fe869d86612be2fee",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"products",
+								"products",
+								"68140299e869d86612be2ff2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Provider",
@@ -375,6 +687,41 @@
 		{
 			"name": "Client",
 			"item": []
+		},
+		{
+			"name": "Report inventoory",
+			"item": [
+				{
+					"name": "Informe inventario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"startDate\": \"2025-05-04\",\r\n    \"endDate\": \"2025-05-04\",\r\n    \"type\": \"entrada\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2002/v1/report/movements",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"report",
+								"movements"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
