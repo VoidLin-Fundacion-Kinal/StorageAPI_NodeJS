@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "0f2cf762-2628-425c-9312-b470d6ee61f8",
+		"_postman_id": "5994a5d7-9e3f-4513-bc28-1f51037b9071",
 		"name": "Storage_APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37956967"
+		"_exporter_id": "37956959"
 	},
 	"item": [
 		{
@@ -85,12 +85,12 @@
 							"urlencoded": [
 								{
 									"key": "userLogin",
-									"value": "dflores",
+									"value": "rlopez",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "Dfl@re2007",
+									"value": "Alfred@88917",
 									"type": "text"
 								}
 							]
@@ -103,6 +103,13 @@
 							"port": "2002",
 							"path": [
 								"login"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -245,13 +252,13 @@
 							"urlencoded": [
 								{
 									"key": "password",
-									"value": "Dfl@re1974",
+									"value": "Alfred@88917",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:2002/v1/user/deleteUser/681050babbffd99ed4119dd7",
+							"raw": "localhost:2002/v1/user/deleteUser/68144c0eb9c80a1821329a43",
 							"host": [
 								"localhost"
 							],
@@ -260,7 +267,183 @@
 								"v1",
 								"user",
 								"deleteUser",
-								"681050babbffd99ed4119dd7"
+								"68144c0eb9c80a1821329a43"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "InventoryMovement",
+			"item": [
+				{
+					"name": "Entrance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "68166578b36eb510d525ed8f",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/movement/registerEntrance",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"movement",
+								"registerEntrance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product",
+									"value": "68166578b36eb510d525ed8f",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "reason",
+									"value": "popo",
+									"type": "text"
+								},
+								{
+									"key": "destination",
+									"value": "factos ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/movement/registerExit",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"movement",
+								"registerExit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/movement/getMovements/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"movement",
+								"getMovements",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "quantity",
+									"value": "107",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/movement/updateMovement/6818175b2c2fd2560eb844f4",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"movement",
+								"updateMovement",
+								"6818175b2c2fd2560eb844f4"
 							]
 						}
 					},
@@ -269,136 +452,11 @@
 			]
 		},
 		{
-			"name": "InventoryMovement",
-			"item": []
-		},
-		{
 			"name": "Products",
 			"item": [
 				{
-					"name": "Get All Products",
+					"name": "Agregar Producto",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/products/products",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"products",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Products by id",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/products/products",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"products",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Products by name",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/products/Category/Technology",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"products",
-								"Category",
-								"Technology"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Products by Category",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/products/Category/Technology",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"products",
-								"Category",
-								"Technology"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Products by date",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2002/v1/products/Category/Technology",
-							"host": [
-								"localhost"
-							],
-							"port": "2002",
-							"path": [
-								"v1",
-								"products",
-								"Category",
-								"Technology"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Products",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -412,44 +470,62 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Victus 18",
+									"value": "chewpe asssasdf",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "Technology",
+									"value": "gordo",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "5",
+									"value": "10",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Ergonomic wireless keyboard with numeric pad",
+									"value": "chewis chichones",
 									"type": "text"
 								},
 								{
 									"key": "location",
-									"value": "Warehouse B, Shelf 5",
+									"value": "chewy's house",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50.00",
 									"type": "text"
 								},
 								{
 									"key": "provider",
-									"value": "6814ed27ae76ef03bc27d5f4",
+									"value": "6816e5c9c2a4496d185f853f",
 									"type": "text"
 								},
 								{
-									"key": "deleteFrom",
-									"value": "6813fd709aadd0de6f30ad2e",
+									"key": "removed",
+									"value": "false",
 									"type": "text",
 									"disabled": true
 								},
 								{
-									"key": "price",
-									"value": "7000",
-									"type": "text"
+									"key": "reasonDeleted",
+									"value": "adsf",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deleteFrom",
+									"value": "68165fefdbc7b5682a096238",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deletionDate",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -469,50 +545,82 @@
 					"response": []
 				},
 				{
-					"name": "Put Products",
+					"name": "update",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Victus 17",
+									"value": "chewpe ",
 									"type": "text"
 								},
 								{
 									"key": "category",
-									"value": "Technology",
+									"value": "gordo",
 									"type": "text"
 								},
 								{
 									"key": "amount",
-									"value": "5",
+									"value": "10",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Ergonomic wireless keyboard with numeric pad",
+									"value": "chewis chichones",
 									"type": "text"
 								},
 								{
 									"key": "location",
-									"value": "Warehouse B, Shelf 5",
+									"value": "chewy's house",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "50.00",
 									"type": "text"
 								},
 								{
 									"key": "provider",
-									"value": "6814028fe869d86612be2fee",
+									"value": "6816e5c9c2a4496d185f853f",
 									"type": "text"
+								},
+								{
+									"key": "removed",
+									"value": "false",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "reasonDeleted",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deleteFrom",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deletionDate",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"raw": "localhost:2002/v1/products/products/6816ee04c2a4496d185f8587",
 							"host": [
 								"localhost"
 							],
@@ -521,57 +629,25 @@
 								"v1",
 								"products",
 								"products",
-								"68140299e869d86612be2ff2"
+								"6816ee04c2a4496d185f8587"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Delete products",
+					"name": "getProducts",
 					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Victus 17",
-									"type": "text"
-								},
-								{
-									"key": "category",
-									"value": "Technology",
-									"type": "text"
-								},
-								{
-									"key": "amount",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Ergonomic wireless keyboard with numeric pad",
-									"type": "text"
-								},
-								{
-									"key": "location",
-									"value": "Warehouse B, Shelf 5",
-									"type": "text"
-								},
-								{
-									"key": "provider",
-									"value": "6814028fe869d86612be2fee",
-									"type": "text"
-								}
-							]
-						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:2002/v1/products/products/68140299e869d86612be2ff2",
+							"raw": "localhost:2002/v1/products/date/2025-05-03T18:50:32.142+00:00",
 							"host": [
 								"localhost"
 							],
@@ -579,8 +655,45 @@
 							"path": [
 								"v1",
 								"products",
+								"date",
+								"2025-05-03T18:50:32.142+00:00"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "reasonDeleted",
+									"value": "chewy es muy chewy",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/products/product/681819312c2fd2560eb84515",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
 								"products",
-								"68140299e869d86612be2ff2"
+								"product",
+								"681819312c2fd2560eb84515"
 							]
 						}
 					},
@@ -645,9 +758,15 @@
 					"name": "Eliminar Proveedor",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:2002/v1/provider/deleteProvider/681312fb1b1101e797f3eb5e",
+							"raw": "localhost:2002/v1/provider/deleteProvider/68181ac025897e64d61ea320",
 							"host": [
 								"localhost"
 							],
@@ -656,17 +775,23 @@
 								"v1",
 								"provider",
 								"deleteProvider",
-								"681312fb1b1101e797f3eb5e"
+								"68181ac025897e64d61ea320"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Buscar Productos",
+					"name": "Buscar Proveedor",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2002/v1/provider/getAllProvider",
 							"host": [
@@ -686,7 +811,145 @@
 		},
 		{
 			"name": "Client",
-			"item": []
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "retangana",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "retanal",
+									"type": "text"
+								},
+								{
+									"key": "company",
+									"value": "Retana Company",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "retana@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "12345678",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/client/addClient/",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"client",
+								"addClient",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2002/v1/report/getInventory",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"report",
+								"getInventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movements",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "startDate",
+									"value": "2025-05-04",
+									"type": "text"
+								},
+								{
+									"key": "endDate",
+									"value": "2025-05-06",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "entrada",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2002/v1/movements/report",
+							"host": [
+								"localhost"
+							],
+							"port": "2002",
+							"path": [
+								"v1",
+								"movements",
+								"report"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
