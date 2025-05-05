@@ -1,5 +1,4 @@
-import express from "express";
-import mongoose from "mongoose";
+
 import productsModel from "../Products/products.model.js";
 //import { Collection } from "mongoose";
 
